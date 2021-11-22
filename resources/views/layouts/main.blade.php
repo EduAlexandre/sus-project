@@ -5,7 +5,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset("/assets/img/apple-icon.png")}}">
     <link rel="icon" type="image/png" sizes="96x96" href="{{asset("/assets/img/favicon.png")}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
@@ -29,7 +29,7 @@
     <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
     <link href="{{asset("/assets/css/themify-icons.css")}}" rel="stylesheet">
 
-    <script src="{{asset("/assets/js/jquery-3.6.0.min.js")}}" type="text/javascript"></script>
+
 </head>
 
 <body>
@@ -50,11 +50,24 @@
             </a>
 
             <a href="{{url('dashboard')}}" class="simple-text logo-normal">
-                SA/SUS
+                SIPOM/SAIPM
             </a>
         </div>
         <div class="sidebar-wrapper">
             <div class="user">
+                <div class="info">
+                    <div class="photo">
+                        <img src="{{asset("/assets/img/faces/face-2.jpg")}}" />
+                    </div>
+
+                    <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+	                        <span>
+                                {{ Auth::user()->name }}
+		                        <b class="caret"></b>
+							</span>
+                    </a>
+                    <div class="clearfix"></div>
+
                     <div class="collapse" id="collapseExample">
                         <ul class="nav">
                             <li>
@@ -64,22 +77,22 @@
                                 </a>
                             </li>
                             @if(Auth::user()->isAdmin && Auth::user()->isActive)
-                            <li>
-                                <a href="{{url('user')}}">
-                                    <span class="sidebar-mini">Ca</span>
-                                    <span class="sidebar-normal">Cadastrar Usuário</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{url('user/list')}}">
+                                <li>
+                                    <a href="{{url('user')}}">
+                                        <span class="sidebar-mini">Ca</span>
+                                        <span class="sidebar-normal">Cadastrar Usuário</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{url('user/list')}}">
                                         <span class="sidebar-mini">LT</span>
                                         <span class="sidebar-normal">Lista de Usuários</span>
-                                </a>
-                            </li>
+                                    </a>
+                                </li>
                             @endif
                         </ul>
                     </div>
-
+                </div>
             </div>
             <ul class="nav">
                 <li>
@@ -92,9 +105,9 @@
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{route('register-occurrences.index')}}">
+                                <a href="{{url('employee')}}">
                                     <span class="sidebar-mini">C</span>
-                                    <span class="sidebar-normal">Cadastrar</span>
+                                    <span class="sidebar-normal">Cadastrar funcionário</span>
                                 </a>
                             </li>
                             <li>
@@ -217,23 +230,23 @@
                         <span class="icon-bar bar3"></span>
                     </button>
                     <a class="navbar-brand" href="#Dashboard">
-                    {{ Auth::user()->name }} - Seja Bem Vindo!
+                        {{ Auth::user()->name }} - Seja Bem Vindo!
                     </a>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                           <div class="navbar-form">
-                               <form method="POST" action="{{ route('logout') }}">
-                                   @csrf
+                            <div class="navbar-form">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
 
-                                   <x-dropdown-link :href="route('logout')"
-                                                    onclick="event.preventDefault();
+                                    <x-dropdown-link :href="route('logout')"
+                                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                           <p class="pull-right" style="color: #DB2B39; font-weight: bold; padding-right: 2px; padding-top: 2px">SAIR</p>
-                                   </x-dropdown-link>
-                               </form>
-                           </div>
+                                        <p class="pull-right" style="color: #DB2B39; font-weight: bold; padding-right: 2px; padding-top: 2px">SAIR</p>
+                                    </x-dropdown-link>
+                                </form>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -278,7 +291,7 @@
 
 <!--   Core JS Files. Extra: TouchPunch for touch library inside jquery-ui.min.js   -->
 
-
+<script src="{{asset("/assets/js/jquery-3.6.0.min.js")}}" type="text/javascript"></script>
 <script src="{{asset("/assets/js/jquery-ui.min.js")}}" type="text/javascript"></script>
 <script src="{{asset("/assets/js/perfect-scrollbar.min.js")}}" type="text/javascript"></script>
 <script src="{{asset("/assets/js/bootstrap.min.js")}}" type="text/javascript"></script>
@@ -339,14 +352,14 @@
 <!-- change-user-status-and-situation JS -->
 <script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script>
 
+@yield('add_typification')
+@yield('update_data_policeman')
+@yield('add_prison_creed')
+@yield('add_prison_go_along')
+@yield('add_new_policeman')
+
 
 <script type="text/javascript">
-
-    //TRANFOMER LETTER IN UPPERCASE
-    function changeUppercase(letter){
-        upperLetter = letter.value.toUpperCase();
-        letter.value = upperLetter;
-    }
     $().ready(function () {
         $('#registerFormValidation').validate();
     });
@@ -384,5 +397,25 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+
+    //TRANFOMER LETTER IN UPPERCASE
+    function changeUppercase(letter){
+        upperLetter = letter.value.toUpperCase();
+        letter.value = upperLetter;
+    }
+
+
+    // PREVIEW FOTO
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("uploadPreview").src = oFREvent.target.result;
+        };
+    };
+
 </script>
 </html>

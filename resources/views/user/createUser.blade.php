@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="card">
-                <form  method="POST"  >
+                <form  method="POST">
                     @csrf
                     <div class="card-header">
                         <h4 class="card-title">

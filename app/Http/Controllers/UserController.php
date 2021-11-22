@@ -120,7 +120,7 @@ if ($request->password && !$request->password == null)
 
         $request->validate($rules, $feedBack);
 
-        $newPassword = "@123@";
+        $newPassword = "123456";
       User::create([
             'name' => $request->name,
             'email' => $request->email,

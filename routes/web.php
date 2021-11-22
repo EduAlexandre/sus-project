@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PolicemanController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\EmployeeController;
 
 
 Route::get('/', function () {
@@ -15,12 +16,11 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/dashboard', function () { return view('admintemplate'); });
 
 
-    Route::prefix('register-occurrences')->group(function (){
-        Route::get('/search', [RegisterController::class, 'show'])->name('register-occurrences.show');
-        Route::get('/', [RegisterController::class, 'index'])->name('register-occurrences.index');
-        Route::get('/{id}', [RegisterController::class, 'edit'])->name('register-occurrences.edit');
+    Route::prefix('employee')->group(function (){
+        Route::get('/', [EmployeeController::class, 'show']);
+        Route::post('/', [EmployeeController::class, 'create']);
     });
-    Route::resource('policeman', PolicemanController::class);
+
 
     Route::prefix('user')->group(function () {
         Route::get('/', [UserController::class, 'index']);
