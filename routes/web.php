@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function (){
     Route::prefix('employee')->group(function (){
         Route::get('/', [EmployeeController::class, 'show']);
         Route::post('/', [EmployeeController::class, 'create']);
+        Route::get('/list', [EmployeeController::class, 'listEmployee']);
     });
 
 

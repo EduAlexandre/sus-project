@@ -50,7 +50,7 @@
             </a>
 
             <a href="{{url('dashboard')}}" class="simple-text logo-normal">
-                SIPOM/SAIPM
+                SA/SUS
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -111,9 +111,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="../components/grid.html">
+                                <a href="{{url('employee/list')}}">
                                     <span class="sidebar-mini">P</span>
-                                    <span class="sidebar-normal">Pesquisar</span>
+                                    <span class="sidebar-normal">Pesquisar funcionários</span>
                                 </a>
                             </li>
                         </ul>
@@ -352,7 +352,7 @@
 <!-- change-user-status-and-situation JS -->
 <script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script>
 
-@yield('add_typification')
+@yield('add_cpf_mask')
 @yield('update_data_policeman')
 @yield('add_prison_creed')
 @yield('add_prison_go_along')

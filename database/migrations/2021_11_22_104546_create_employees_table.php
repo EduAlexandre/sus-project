@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreateEmployeesTable extends Migration
 {
     /**
@@ -19,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('mother', 150);
             $table->string('cpf', 14)->unique();
             $table->string('isAlive', 3);
-            $table->text('deathCause');
+            $table->text('deathCause')->nullable(true);
             $table->string('address', 80);
             $table->string('district', 80);
             $table->string('city', 40);
