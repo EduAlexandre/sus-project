@@ -20,6 +20,8 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/', [EmployeeController::class, 'show']);
         Route::post('/', [EmployeeController::class, 'create']);
         Route::get('/list', [EmployeeController::class, 'listEmployee']);
+        Route::get('/list/{id}', [EmployeeController::class, 'listDataEmployee']);
+        Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
     });
 
 

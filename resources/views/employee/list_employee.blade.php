@@ -31,9 +31,8 @@
                                 <td>{{$all_employees->isAlive}}</td>
 
                                 <td class="td-actions text-center">
-                                    <a href="edit/{{$all_employees->id}}"
+                                    <a href="list/{{$all_employees->id}}"
                                        rel="tooltip"
-
                                        title="Visualizar Cadastro"
                                        class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-user"></i>

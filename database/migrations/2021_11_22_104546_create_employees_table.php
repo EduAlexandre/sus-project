@@ -19,6 +19,8 @@ class CreateEmployeesTable extends Migration
             $table->string('name', 150);
             $table->string('mother', 150);
             $table->string('cpf', 14)->unique();
+            $table->string('rg', 30)->unique();
+            $table->string('sus_card',50)->unique();
             $table->string('isAlive', 3);
             $table->text('deathCause')->nullable(true);
             $table->string('address', 80);

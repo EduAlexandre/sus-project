@@ -13,6 +13,8 @@ class Employee extends Model
         'name',
         'mother',
         'cpf',
+        'rg',
+        'sus_card',
         'isAlive',
         'deathCause',
         'address',

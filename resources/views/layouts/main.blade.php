@@ -353,7 +353,7 @@
 <script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script>
 
 @yield('add_cpf_mask')
-@yield('update_data_policeman')
+@yield('edit_employee_data')
 @yield('add_prison_creed')
 @yield('add_prison_go_along')
 @yield('add_new_policeman')
