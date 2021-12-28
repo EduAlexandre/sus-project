@@ -154,8 +154,8 @@
                         <div class="card-content">
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1"> Informe as possiveis causas do falecimento: </label>
-                                <textarea class="form-control" onkeyup="changeUppercase(this)" id="death_cause" name="death_cause" {{$data->isAlive == 'NAO' ? : 'disabled'}}>
+                                <label class="control-label"> Informe as possiveis causas do falecimento: </label>
+                                <textarea style="resize: vertical" class="form-control" onkeyup="changeUppercase(this)" id="death_cause" name="death_cause" {{$data->isAlive == 'NAO' ? : 'disabled'}}>
                                      {{$data->deathCause ?? ''}}
                                 </textarea>
 
@@ -230,7 +230,6 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" id="update_button_data" class="btn btn-info btn-fill pull-right">Editar</button>
-                            <button type="button" class="btn btn-fill btn-warning pull-left" data-toggle="modal" data-target="#exampleModal">Cadastrar Exame médico</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -241,84 +240,6 @@
         </div><!--END DIV ROW -->
 
     </div><!--END DIV FLUID -->
-
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cadastros</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="acordeon">
-                        <div class="panel-group" id="accordion">
-                            <div class="panel panel-border panel-default">
-                                <a data-toggle="collapse" href="#collapseDoctor">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            RADIOLOGIA DE TÓRAX
-                                            <i class="ti-angle-down"></i>
-                                        </h4>
-                                    </div>
-                                </a>
-                                <div id="collapseDoctor" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        <div class="card-content">
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Data do Exame
-                                                    <star>*</star>
-                                                </label>
-                                                <input class="form-control"
-                                                       name="date"
-                                                       id="date"
-                                                       type="date"
-                                                       required="true"
-                                                       autocomplete="off"
-                                                />
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Número do Exame
-                                                    <star>*</star>
-                                                </label>
-                                                <input class="form-control"
-                                                       name="exame_name"
-                                                       id="exame_name"
-                                                       type="text"
-                                                       required="true"
-                                                       autocomplete="off"
-                                                />
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="control-label">
-                                                    Resultado do Exame
-                                                    <star>*</star>
-                                                </label>
-                                                <textarea class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

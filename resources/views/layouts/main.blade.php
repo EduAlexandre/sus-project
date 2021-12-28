@@ -326,7 +326,6 @@
 <!-- Vector Map plugin -->
 <script src="{{asset("/assets/js/jquery-jvectormap.js")}}"></script>
 
-
 <!-- Wizard Plugin    -->
 <script src="{{asset("/assets/js/jquery.bootstrap.wizard.min.js")}}"></script>
 
@@ -352,6 +351,8 @@
 <!-- change-user-status-and-situation JS -->
 <script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script>
 
+<script src="{{asset("/assets/js/demo.js")}}"></script>
+
 @yield('add_cpf_mask')
 @yield('edit_employee_data')
 @yield('add_prison_creed')
@@ -362,6 +363,12 @@
 <script type="text/javascript">
     $().ready(function () {
         $('#registerFormValidation').validate();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        demo.initWizard();
     });
 </script>
 

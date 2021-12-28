@@ -157,4 +157,9 @@ class EmployeeController extends Controller
             'message'=>'Dados atualizados com sucesso'
         ]);
     }
+
+    public function registerDiseaseEmployee(Employee $employee)
+    {
+        return view('employee.register_disease_employee', ['employee'=> $employee]);
+    }
 }

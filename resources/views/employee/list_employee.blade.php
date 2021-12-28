@@ -18,7 +18,7 @@
                             <th>Nome Completo</th>
                             <th>Mãe</th>
                             <th>CPF</th>
-                            <th>Situação</th>
+                            <th>Vivo</th>
                             <th class="text-center">Ações</th>
                         </tr>
                         </thead>
@@ -33,9 +33,15 @@
                                 <td class="td-actions text-center">
                                     <a href="list/{{$all_employees->id}}"
                                        rel="tooltip"
-                                       title="Visualizar Cadastro"
+                                       title="Editar Cadastro"
                                        class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-user"></i>
+                                    </a>
+                                    <a href="/employee/disease/{{$all_employees->id}}"
+                                       rel="tooltip"
+                                       title="Cadastrar Exames"
+                                       class="btn btn-success btn-simple btn-xs">
+                                        <i class="ti-agenda"></i>
                                     </a>
                                 </td>
                             </tr>
