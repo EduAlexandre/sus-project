@@ -28,7 +28,7 @@ class Exams extends Model
             'exam_chest_result',
             'exam_chest_neoplasms',
             'exam_chest_responsible',
-            'exam_chest_file',
+            'appendant',
             'company_name',
             'company_cnae',
             'company_unity',

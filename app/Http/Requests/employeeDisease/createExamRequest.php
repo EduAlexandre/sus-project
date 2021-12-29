@@ -4,7 +4,7 @@ namespace App\Http\Requests\employeeDisease;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class createRequest extends FormRequest
+class createExamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -37,13 +37,13 @@ class createRequest extends FormRequest
             'fef_1'                  => 'max:120|string',
             'fef_2'                  => 'max:120|string',
             'fef_3'                  => 'max:120|string',
-            'text'                   => 'max:500|string',
+            'lung_result'            => 'max:500|string',
             'exam_chest_date'        => 'date',
             'exam_chest_number'      => 'max:120|string',
             'exam_chest_result'      => 'max:120|string',
             'exam_chest_neoplasms'   => 'max:120|string',
             'exam_chest_responsible' => 'max:120|string',
-            'exam_chest_file'        => 'mimes:pdf',
+            'appendant'              => 'mimes:pdf',
             'company_name'           => 'max:120|string',
             'company_cnae'           => 'max:120|string',
             'company_unity'          => 'max:120|string',
@@ -54,6 +54,7 @@ class createRequest extends FormRequest
             'company_office'         => 'max:120|string',
             'sinan'                  => 'max:120|string',
             'cat'                    => 'max:120|string',
+            'employees_id'           => 'numeric|required'
         ];
     }
 }

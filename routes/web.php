@@ -19,10 +19,11 @@ Route::middleware(['auth'])->group(function (){
     Route::prefix('employee')->group(function (){
         Route::get('/', [EmployeeController::class, 'show'])->name('employee.index');
         Route::post('/', [EmployeeController::class, 'create']);
+        Route::get('/list/{id}', [EmployeeController::class, 'listDataEmployee'])->name('employee.show');
         Route::get('/list', [EmployeeController::class, 'listEmployee'])->name('employee.list');
-        Route::get('/list/{id}', [EmployeeController::class, 'listDataEmployee']);
         Route::post('/update/{employee}', [EmployeeController::class, 'updateEmployee'])->name('employee.edit');
-        Route::get('/exam/create/{employee}', [EmployeeController::class, 'createExamEmployee']);
+        Route::get('/exam/{employee}', [EmployeeController::class, 'showExamEmployee'])->name('employee.exam.show');
+        Route::post('/exam', [EmployeeController::class, 'createExamEmployee'])->name('employee.exam.create');;
     });
 
 

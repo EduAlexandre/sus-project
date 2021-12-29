@@ -34,7 +34,7 @@ class CreateExamsTable extends Migration
             $table->string('exam_chest_result')->nullable()->default("NÃO INFORMADO");
             $table->string('exam_chest_neoplasms')->nullable()->default("NÃO INFORMADO");
             $table->string('exam_chest_responsible')->nullable()->default("NÃO INFORMADO");
-            $table->string('exam_chest_file')->nullable()->default("NÃO INFORMADO");
+            $table->string('appendant')->nullable()->default("NÃO INFORMADO");
             $table->string('company_name')->nullable()->default("NÃO INFORMADO");
             $table->string('company_cnae')->nullable()->default("NÃO INFORMADO");
             $table->string('company_unity')->nullable()->default("NÃO INFORMADO");

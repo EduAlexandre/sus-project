@@ -34,13 +34,13 @@
                                 <td>{{$all_employees->isAlive}}</td>
 
                                 <td class="td-actions text-center">
-                                    <a href="list/{{$all_employees->id}}"
+                                    <a href="{{route('employee.show', $all_employees->id)}}"
                                        rel="tooltip"
                                        title="Editar Cadastro"
                                        class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-user"></i>
                                     </a>
-                                    <a href="exam/create/{{$all_employees->id}}"
+                                    <a href="{{route('employee.exam.show', $all_employees->id)}} "
                                        rel="tooltip"
                                        title="Cadastrar Exames"
                                        class="btn btn-success btn-simple btn-xs">

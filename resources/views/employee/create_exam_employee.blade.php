@@ -4,9 +4,12 @@
 
 @section('content')
             <div class="row">
+                <div class="row" style="margin-bottom: 8px; margin-right: 12px;">
+                    <a href="{{route("employee.list")}}"  class="btn btn-warning btn-fill pull-right">Voltar</a>
+                </div>
                 <div class="col-md-12 col-md-offset-0">
                     <div class="card card-wizard" id="wizardCard">
-                        <form enctype="multipart/form-data" id="wizardForm" method="post">
+                        <form action="{{route('employee.exam.create')}}" id="wizardForm" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="employees_id" value="{{$employee->id}}">
                             <div class="card-header text-center">
@@ -30,7 +33,7 @@
                                                         </label>
                                                         <input class="form-control"
                                                                type="date"
-                                                               name="exame_lung_date"
+                                                               name="examLung_date"
                                                         />
                                                     </div>
                                                 </div>
@@ -165,7 +168,7 @@
                                                     <label class="control-label">Data do exame</label>
                                                     <input class="form-control"
                                                            type="date"
-                                                           name="exame_chest_date"
+                                                           name="exam_chest_date"
                                                     />
                                                 </div>
 
@@ -173,13 +176,13 @@
                                                     <label class="control-label">Número do exame</label>
                                                     <input class="form-control"
                                                            type="number"
-                                                           name="exame_chest_number"
+                                                           name="exam_chest_number"
                                                     />
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label">Resultado do exame</label>
-                                                    <textarea name="exame_chest_result" style="resize: vertical" class="form-control"
+                                                    <textarea name="exam_chest_result" style="resize: vertical" class="form-control"
                                                               placeholder="Descrição" rows='4'></textarea>
                                                 </div>
 
@@ -188,7 +191,7 @@
 
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword1">Neoplasias Malignas</label>
-                                                    <select name="exame_chest_neoplasms" class="selectpicker" title="Selecione" data-size="5">
+                                                    <select name="exam_chest_neoplasms" class="selectpicker" title="Selecione" data-size="5">
                                                         <option value="NAO">NÃO</option>
                                                         <option value="Estomago_C16">Estômoga-C16</option>
                                                         <option value="Laringe_C32">Laringe-C16</option>
@@ -202,18 +205,20 @@
                                                     <label class="control-label">Nome responsável </label>
                                                     <input class="form-control"
                                                            type="text"
-                                                           name="exame_chest_responsible"
+                                                           name="exam_chest_responsible"
                                                     />
                                                 </div>
 
-
-
                                                 <div class="form-group">
-                                                    <label class="control-label">Anexar documento médico.</label>
-                                                    <input class="form-control"
-                                                           type="file"
-                                                           name="exame_chest_file"
-                                                    />
+                                                    <label class="control-label">
+                                                        Anexar documento médico
+                                                    </label>
+                                                    <input
+                                                        class="form-control"
+                                                        type="file"
+                                                        name="appendant"
+                                                        accept=".pdf,.doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -275,7 +280,7 @@
                                                 <div class="form-group">
                                                     <label class="control-label">Setor </label>
                                                     <input class="form-control"
-                                                           type="date"
+                                                           type="text"
                                                            name="company_sector"
                                                     />
                                                 </div>

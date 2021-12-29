@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\employee\updateEmployeeRequest;
-use App\Http\Requests\employeeDisease\createRequest;
+use App\Http\Requests\employeeDisease\createExamRequest;
 use App\Http\Requests\employee\createEmployeeRequest;
 use App\Models\Employee;
 use App\Models\Exams;
@@ -61,28 +61,28 @@ class EmployeeController extends Controller
         return redirect('/employee/list');
     }
 
-    public function createExamEmployee(createEmployeeRequest $createRequest, Employee $employee)
+    public function showExamEmployee(Request $createRequest, Employee $employee)
     {
-
         return view('employee.create_exam_employee', ['employee'=> $employee]);
     }
 
-    public function createDiseaseEmployee(createEmployeeRequest $createRequest)
+    public function createExamEmployee(createExamRequest $createRequest)
     {
-        dd($createRequest);
+
        $data = $createRequest->validated();
 
-       if ($createRequest->hasFile('exame_chest_file'))
+       if ($createRequest->hasFile('appendant'))
        {
-           $file = $createRequest->file('exame_chest_file');
+           $file = $createRequest->file('appendant');
            $extension = $file->extension();
            $fileName = md5($file->getClientOriginalName().strtotime("now")) . "." .$extension;
            $file->move(public_path('assets/files/exams'), $fileName);
-           $data->exame_chest_file = $fileName;
+           $data['appendant'] = $fileName;
        }
 
-       Exams::create($data);
+        Exams::create($data);
 
+        Alert::success('Sucesso', 'Exame cadastrado com sucesso');
         return redirect('employee/list');
     }
 }
