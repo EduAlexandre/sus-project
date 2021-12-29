@@ -112,13 +112,13 @@
                                     <input
                                         required
                                         type="radio"
-                                        name="is_alive"
+                                        name="isAlive"
                                         value="SIM"
                                         id="radio1"
                                         {{$data->isAlive == 'SIM' ? 'checked' : ''}}
-                                        onclick="if(document.getElementById('death_cause').disabled==false)
+                                        onclick="if(document.getElementById('deathCause').disabled==false)
                                         {
-                                            document.getElementById('death_cause').disabled=true
+                                            document.getElementById('deathCause').disabled=true
                                             clearContent()
                                         }"
                                     >
@@ -131,17 +131,17 @@
                                     <input
                                         required
                                         type="radio"
-                                        name="is_alive"
+                                        name="isAlive"
                                         value="NAO"
                                         id="radio2"
                                         {{$data->isAlive == 'NAO' ? 'checked' : ''}}
-                                        onclick="if(document.getElementById('death_cause').disabled==true){document.getElementById('death_cause').disabled=false }"
+                                        onclick="if(document.getElementById('deathCause').disabled==true){document.getElementById('deathCause').disabled=false }"
                                     >
                                     <label for="radio2">
                                         Óbito
                                     </label>
                                 </div>
-                                <p style="color: red">{{$errors->has('is_alive') ? $errors->first('is_alive') : ''}}</p>
+                                <p style="color: red">{{$errors->has('isAlive') ? $errors->first('isAlive') : ''}}</p>
                             </div>
 
                         </div>
@@ -157,11 +157,11 @@
 
                             <div class="form-group">
                                 <label class="control-label"> Informe as possiveis causas do falecimento: </label>
-                                <textarea style="resize: vertical" class="form-control" onkeyup="changeUppercase(this)" id="death_cause" name="death_cause" {{$data->isAlive == 'NAO' ? : 'disabled'}}>
+                                <textarea style="resize: vertical" class="form-control" onkeyup="changeUppercase(this)" id="deathCause" name="deathCause" {{$data->isAlive == 'NAO' ? : 'disabled'}}>
                                      {{$data->deathCause ?? ''}}
                                 </textarea>
 
-                                <p style="color: red">{{$errors->has('death_cause') ? $errors->first('death_cause') : ''}}</p>
+                                <p style="color: red">{{$errors->has('deathCause') ? $errors->first('deathCause') : ''}}</p>
                             </div>
 
 

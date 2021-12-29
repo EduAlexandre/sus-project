@@ -108,7 +108,7 @@
                                         name="isAlive"
                                         id="radio1"
                                         value="SIM"
-                                        onclick="if(document.getElementById('death_cause').disabled==false){document.getElementById('death_cause').disabled=true}"
+                                        onclick="if(document.getElementById('deathCause').disabled==false){document.getElementById('deathCause').disabled=true}"
                                     >
                                     <label for="radio1">
                                         Ativo
@@ -121,13 +121,13 @@
                                         name="isAlive"
                                         id="radio2"
                                         value="NAO"
-                                        onclick="if(document.getElementById('death_cause').disabled==true){document.getElementById('death_cause').disabled=false }"
+                                        onclick="if(document.getElementById('deathCause').disabled==true){document.getElementById('deathCause').disabled=false }"
                                     >
                                     <label for="radio2">
                                         Óbito
                                     </label>
                                 </div>
-                                <p style="color: red">{{$errors->has('is_alive') ? $errors->first('is_alive') : ''}}</p>
+                                <p style="color: red">{{$errors->has('isAlive') ? $errors->first('isAlive') : ''}}</p>
                             </div>
 
                         </div>
@@ -146,15 +146,15 @@
                                 <textarea
                                     class="form-control"
                                     onkeyup="changeUppercase(this)"
-                                    id="death_cause"
-                                    name="death_cause"
+                                    id="deathCause"
+                                    name="deathCause"
                                     disabled="disabled"
                                     rows="3" cols="3"
                                 >
                                     {{old('death_cause')}}
                                 </textarea>
 
-                                <p style="color: red">{{$errors->has('death_cause') ? $errors->first('death_cause') : ''}}</p>
+                                <p style="color: red">{{$errors->has('deathCause') ? $errors->first('deathCause') : ''}}</p>
                             </div>
 
 
