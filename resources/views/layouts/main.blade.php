@@ -109,6 +109,7 @@
                                     <span class="sidebar-mini">LF</span>
                                     <span class="sidebar-normal">Lista de funcionários</span>
                                 </a>
+
                             </li>
                         </ul>
                     </div>

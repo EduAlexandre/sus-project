@@ -15,7 +15,7 @@
                     <!--Here you can write extra buttons/actions for the toolbar-->
                 </div>
                 <div class="fresh-datatables">
-                    <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                    <table id="datatables" class="table table-striped table-no-bordered table-hover" style="width:100%">
                         <thead>
                         <tr>
                             <th>Nome Completo</th>
@@ -40,7 +40,7 @@
                                        class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-user"></i>
                                     </a>
-                                    <a href="/employee/disease/{{$all_employees->id}}"
+                                    <a href="exam/create/{{$all_employees->id}}"
                                        rel="tooltip"
                                        title="Cadastrar Exames"
                                        class="btn btn-success btn-simple btn-xs">

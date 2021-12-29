@@ -61,9 +61,10 @@ class EmployeeController extends Controller
         return redirect('/employee/list');
     }
 
-    public function registerDiseaseEmployee(createEmployeeRequest $createRequest, Employee $employee)
+    public function createExamEmployee(createEmployeeRequest $createRequest, Employee $employee)
     {
-        return view('employee.register_disease_employee', ['employee'=> $employee]);
+
+        return view('employee.create_exam_employee', ['employee'=> $employee]);
     }
 
     public function createDiseaseEmployee(createEmployeeRequest $createRequest)
