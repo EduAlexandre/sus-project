@@ -6,6 +6,9 @@
 
 <div class="row"><!-- START template table -->
     <div class="col-md-12">
+        <div class="row" style="margin-bottom: 8px; margin-right: 6px;">
+            <a href="{{route("employee.index")}}"  class="btn btn-warning btn-fill pull-right">Cadastrar funcionário</a>
+        </div>
         <div class="card">
             <div class="card-content">
                 <div class="toolbar">

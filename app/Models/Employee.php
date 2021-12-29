@@ -22,4 +22,9 @@ class Employee extends Model
         'city',
         'state',
     ];
+
+    public function diseaseEmployee(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany('App\Models\Exams', 'employees_id');
+    }
 }

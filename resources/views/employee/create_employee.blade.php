@@ -4,8 +4,11 @@
 
 @section('content')
     <div class="container-fluid">
+        <div class="row" style="margin-bottom: 8px; margin-right: 6px;">
+            <a href="{{route("employee.list")}}"  class="btn btn-warning btn-fill pull-right">Voltar</a>
+        </div>
         <div class="row">
-            <form method="POST" id="update_data_policeman">
+            <form method="POST">
                 @csrf
                 <div class="col-lg-6 col-sm-6">
                     <div class="card">
@@ -25,7 +28,6 @@
                                        name="name"
                                        value="{{old('name')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
 
@@ -40,14 +42,13 @@
                                     <star>*</star>
                                 </label>
                                 <input class="form-control"
-                                       name="mother_name"
-                                       value="{{old('mother_name')}}"
+                                       name="mother"
+                                       value="{{old('mother')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
                                 />
-                                <p style="color: red">{{$errors->has('mother_name') ? $errors->first('mother_name') : ''}}</p>
+                                <p style="color: red">{{$errors->has('mother') ? $errors->first('mother') : ''}}</p>
                             </div>
 
                             <div class="form-group">
@@ -60,7 +61,6 @@
                                        name="cpf"
                                        value="{{old('cpf')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        oninput="mascara(this)"
                                 />
@@ -77,7 +77,6 @@
                                        name="rg"
                                        value="{{old('rg')}}"
                                        type="number"
-                                       required="true"
                                        autocomplete="off"
                                 />
                                 <p style="color: red">{{$errors->has('rg') ? $errors->first('rg') : ''}}</p>
@@ -93,7 +92,6 @@
                                        name="sus_card"
                                        value="{{old('sus_card')}}"
                                        type="number"
-                                       required="true"
                                        autocomplete="off"
                                 />
                                 <p style="color: red">{{$errors->has('sus_card') ? $errors->first('sus_card') : ''}}</p>
@@ -106,9 +104,8 @@
                                 </label>
                                 <div class="radio">
                                     <input
-                                        required
                                         type="radio"
-                                        name="is_alive"
+                                        name="isAlive"
                                         id="radio1"
                                         value="SIM"
                                         onclick="if(document.getElementById('death_cause').disabled==false){document.getElementById('death_cause').disabled=true}"
@@ -120,9 +117,8 @@
 
                                 <div class="radio">
                                     <input
-                                        required
                                         type="radio"
-                                        name="is_alive"
+                                        name="isAlive"
                                         id="radio2"
                                         value="NAO"
                                         onclick="if(document.getElementById('death_cause').disabled==true){document.getElementById('death_cause').disabled=false }"
@@ -171,7 +167,6 @@
                                        name="address"
                                        value="{{old('address')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
                                 />
@@ -187,7 +182,6 @@
                                        name="district"
                                        value="{{old('district')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
                                 />
@@ -203,7 +197,6 @@
                                        name="city"
                                        value="{{old('city')}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
                                 />
@@ -215,7 +208,7 @@
                                     Estado
                                     <star>*</star>
                                 </label>
-                                <select class="selectpicker" required="true" name="state" title="Selecione" data-size="5">
+                                <select class="selectpicker" name="state" title="Selecione" data-size="5">
                                     @foreach($listStates as $key => $allStates)
                                         <option value="{{$allStates->abbreviation}}" {{old('state') == $allStates->abbreviation ? 'selected' : ''}}>{{$allStates->name}}</option>
                                     @endforeach

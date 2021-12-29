@@ -105,15 +105,9 @@
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{url('employee')}}">
-                                    <span class="sidebar-mini">C</span>
-                                    <span class="sidebar-normal">Cadastrar funcionário</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="{{url('employee/list')}}">
-                                    <span class="sidebar-mini">P</span>
-                                    <span class="sidebar-normal">Pesquisar funcionários</span>
+                                    <span class="sidebar-mini">LF</span>
+                                    <span class="sidebar-normal">Lista de funcionários</span>
                                 </a>
                             </li>
                         </ul>

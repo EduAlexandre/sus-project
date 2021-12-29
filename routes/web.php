@@ -17,11 +17,11 @@ Route::middleware(['auth'])->group(function (){
 
 
     Route::prefix('employee')->group(function (){
-        Route::get('/', [EmployeeController::class, 'show']);
+        Route::get('/', [EmployeeController::class, 'show'])->name('employee.index');
         Route::post('/', [EmployeeController::class, 'create']);
-        Route::get('/list', [EmployeeController::class, 'listEmployee']);
+        Route::get('/list', [EmployeeController::class, 'listEmployee'])->name('employee.list');
         Route::get('/list/{id}', [EmployeeController::class, 'listDataEmployee']);
-        Route::post('/update/{id}', [EmployeeController::class, 'updateEmployee']);
+        Route::post('/update/{employee}', [EmployeeController::class, 'updateEmployee'])->name('employee.edit');
         Route::get('/disease/{employee}', [EmployeeController::class, 'registerDiseaseEmployee']);
     });
 

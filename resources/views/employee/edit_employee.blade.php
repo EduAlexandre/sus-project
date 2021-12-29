@@ -4,9 +4,12 @@
 
 @section('content')
     <div class="container-fluid">
+        <div class="row" style="margin-bottom: 8px; margin-right: 6px;">
+            <a href="{{route("employee.list")}}"  class="btn btn-warning btn-fill pull-right">Voltar</a>
+        </div>
         <div class="row">
-            <form method="POST" id="update_data_policeman">
-                <input type="hidden" id="data_id" value="{{$data->id}}">
+            <form method="post" action="{{route('employee.edit', $data->id)}}" >
+                <input type="hidden" id="employee" value="{{$data->id}}">
                 @csrf
                 <div class="col-lg-6 col-sm-6">
                     <div class="card">
@@ -26,7 +29,6 @@
                                        name="name"
                                        value="{{$data->name ?? ''}}"
                                        type="text"
-                                       required="true"
                                        autocomplete="off"
                                        onkeyup="changeUppercase(this)"
 
@@ -268,67 +270,6 @@
         }
     </script>
 @endsection
-@section('edit_employee_data')
-    <script>
-        $(document).ready(function (){
-            var id = $('#data_id').val()
-            $(document).on('submit', '#update_data_policeman', function (e) {
-                e.preventDefault()
-                let formData = new FormData($('#update_data_policeman')[0])
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: `/employee/update/${id}`,
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        if (response.status == 400)
-                        {
-                            $('#erros_form').html("")
-                            $('#erros_form').addClass('alert alert-danger')
-                            $.each(response.errors, function (key, err_values){
-                                $('#erros_form').append('<li>'+err_values+'</li>')
-                            })
-                        }else{
-                            $('#success_message').html("")
-                            sweetAlert('Dados', 'Atualizado com sucesso!', 'success')
-                            $('#erros_form').removeClass('alert alert-danger')
-                            $('#erros_form').html("")
-                            setTimeout(() => { window.location.href = `/employee/list/${id}`}, 1000);
-                        }
-                    },
-                    error: function (res){
-                        alert(res)
-                    }
-                })
-            })
-            // INICIO - função resposavel para capturar se o campo foi ou não clicado para ativar o botão de atualizar dados
-            $(function () {
-                var $inputs = $("input, select", "#update_data_policeman"),
-                    $button = $("#update_button_data");
-                var limpos = 0;
-                // verificação inicial
-                $inputs.each(function () {
-                    var $this = $(this);
-                    var val = $this.val();
-                    val || limpos++;
-                });
-                $button.prop("disabled", !!limpos);
-                $inputs.on("change, change keyup mouseup, click", function () {
-                    var $this = $(this);
-                    var val = $this.val();
-                    limpos += (val != '' ? 0 : 1)
-                    $button.prop("disabled", false);
-                });
-            });
-            // FIM - função resposavel para capturar se o campo foi ou não clicado para ativar o botão de atualizar dados
-        })
-    </script>
-@endsection
+
 
 
