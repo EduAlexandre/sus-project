@@ -46,6 +46,12 @@
                                        class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-agenda"></i>
                                     </a>
+                                    <a href="{{route('employee.exam.list', $all_employees->id)}} "
+                                       rel="tooltip"
+                                       title="Exames cadastrados"
+                                       class="btn btn-success btn-simple btn-xs">
+                                        <i class="ti-android"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

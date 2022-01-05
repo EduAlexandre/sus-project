@@ -71,7 +71,7 @@
                     <div class="collapse" id="collapseExample">
                         <ul class="nav">
                             <li>
-                                <a href="{{url('/user/edit-yourself')}}">
+                                <a href="{{route('users.edit', Auth::user()->id )}}">
                                     <span class="sidebar-mini">Mc</span>
                                     <span class="sidebar-normal">Minha Conta</span>
                                 </a>
@@ -84,7 +84,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{url('user/list')}}">
+                                    <a href="{{route('users.index')}}">
                                         <span class="sidebar-mini">LT</span>
                                         <span class="sidebar-normal">Lista de Usuários</span>
                                     </a>
@@ -344,10 +344,12 @@
 <script src="{{asset("/assets/js/bootstrap-toggle.min.js")}}"></script>
 
 <!-- change-user-status-and-situation JS -->
-<script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script>
+{{-- <script src="{{asset("/assets/js/change-user-status-situation/change-user-status-and-situation.js")}}"></script> --}}
 
 <script src="{{asset("/assets/js/demo.js")}}"></script>
 
+@yield('user_change_status')
+@yield('user_change_isAdmin')
 @yield('add_cpf_mask')
 @yield('edit_employee_data')
 @yield('add_prison_creed')

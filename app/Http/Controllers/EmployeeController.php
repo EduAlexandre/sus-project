@@ -10,7 +10,7 @@ use App\Models\Exams;
 use App\Models\States;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Validator;
+
 
 class EmployeeController extends Controller
 {
@@ -84,5 +84,12 @@ class EmployeeController extends Controller
 
         Alert::success('Sucesso', 'Exame cadastrado com sucesso');
         return redirect('employee/list');
+    }
+
+    public function listExamEmployee(Employee $employee)
+    {
+        $dataEmployee = Employee::where('id', $employee->id)->get();
+
+        return view('employee.list_exam_employee', ['dataEmployee'=> $dataEmployee]);
     }
 }

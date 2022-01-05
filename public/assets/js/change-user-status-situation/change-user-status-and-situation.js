@@ -4,7 +4,7 @@ $( document ).ready(function() {
             const status = $(this).prop('checked') == true ? 1 : 0;
             const allUsers_id = $(this).data('id')
             $.ajax({
-                type: "GET",
+                type: "POST",
                 dataType: "json",
                 url: '/user/change-status',
                 data: {'status': status, 'allUsers_id': allUsers_id},

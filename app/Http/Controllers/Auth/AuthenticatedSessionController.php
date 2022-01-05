@@ -23,32 +23,37 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @param \App\Http\Requests\Auth\LoginRequest $request
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function store(LoginRequest $request)
     {
+
         $rules = [
             'email' => 'required|string|email',
             'password' => 'required',
         ];
 
         $feedBack = [
-            'email.required'=> 'Informe um e-mail.',
-            'email.email'=> 'Informe um e-mail válido.',
+            'email.required' => 'Informe um e-mail.',
+            'email.email' => 'Informe um e-mail válido.',
             'password.required' => 'Infome a graduação.',
         ];
+
+
 
         $request->validate($rules, $feedBack);
 
         $request->authenticate();
-        if(Auth::user()->isActive && Auth::user()->firstAccess == false){
+
+        if (Auth::user()->isActive && Auth::user()->firstAccess == false) {
             $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        if(Auth::user()->firstAccess && Auth::user()->isActive){
+        if (Auth::user()->firstAccess && Auth::user()->isActive) {
             return redirect('/user/first');
         }
 
@@ -58,7 +63,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
         return redirect('/')->with('toast_error', 'Usuário inativo, entre em contato com o administrador do sistema!');
-
     }
 
     /**

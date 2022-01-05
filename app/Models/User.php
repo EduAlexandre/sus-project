@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-     /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -23,30 +23,14 @@ class User extends Authenticatable
         'register',
         'email',
         'password',
-        'isAdmin'
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+        'isAdmin',
+        'isActive'
     ];
 
 
-
+    //Mutation
+public function setPasswordAttribute($value)
+{
+    $this->attributes['password'] = bcrypt($value);
 }
-
-
+}
