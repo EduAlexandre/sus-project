@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateRequest;
+use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -61,7 +62,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-
         return view('user.status', compact('user'));
     }
 
@@ -74,7 +74,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $action = route('users.update', $user->id);
-        return view('user.form', compact('user','action'));
+        return view('user.form', compact('user', 'action'));
     }
 
     /**
@@ -84,18 +84,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, User $user)
     {
 
-    }
+        $data = $request->validated();
+        $user->update($data);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
+        Alert::success('Sucesso', 'Dados atualizados com sucesso');
+        return redirect()->route('users.index');
     }
 }

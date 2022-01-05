@@ -53,10 +53,6 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended(RouteServiceProvider::HOME);
         }
 
-        if (Auth::user()->firstAccess && Auth::user()->isActive) {
-            return redirect('/user/first');
-        }
-
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

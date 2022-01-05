@@ -16,7 +16,7 @@
 
                     <div class="card-header">
                         <h4 class="card-title">
-                            Registro de novo usuário
+                        {{@$user ? 'Atualizar dados' : 'Registro de novo usuário'}}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -51,7 +51,7 @@
                             @enderror
                         </div>
 
-                        @if(@!$user)
+                        @if(!@$user)
                             <div class="form-group">
                                 <label class="control-label">
                                     Administrador <star>*</star>
@@ -75,7 +75,13 @@
                         <div class="category"><star>*</star> Campos Obrigatórios</div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-info btn-fill pull-right">Cadastrar</button>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">
+                            {{@$user ? 'Atualizar' : 'Cadastrar'}}
+                        </button>
+                        <a href="{{route('users.index')}}" class="btn btn-default btn-fill pull-right"
+                        style="margin-right:8px;">
+                            voltar
+                        </a>
                         <div class="clearfix"></div>
                     </div>
                 </form>

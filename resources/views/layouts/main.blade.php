@@ -78,12 +78,6 @@
                             </li>
                             @if(Auth::user()->isAdmin && Auth::user()->isActive)
                                 <li>
-                                    <a href="{{url('user')}}">
-                                        <span class="sidebar-mini">Ca</span>
-                                        <span class="sidebar-normal">Cadastrar Usuário</span>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="{{route('users.index')}}">
                                         <span class="sidebar-mini">LT</span>
                                         <span class="sidebar-normal">Lista de Usuários</span>

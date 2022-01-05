@@ -20,7 +20,6 @@ class Users extends Migration
             $table->string('password');
             $table->boolean('isAdmin')->default(false);
             $table->boolean('isActive')->default(true);
-            $table->boolean('firstAccess')->default(true);
             $table->timestamps();
         });
     }

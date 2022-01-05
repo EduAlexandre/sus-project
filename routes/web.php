@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\PolicemanController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\User\StatusUserController;
 use App\Http\Controllers\User\UserController;
@@ -43,7 +41,7 @@ Route::middleware(['auth'])->group(function () {
     // });
 
     Route::prefix('user')->group(function () {
-        Route::resource('users', UserController::class);
+        Route::resource('users', UserController::class)->except('destroy');
         Route::resource('users.status', StatusUserController::class)->only(['edit', 'update']);
     });
 });
