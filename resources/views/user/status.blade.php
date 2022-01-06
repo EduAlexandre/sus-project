@@ -5,7 +5,7 @@
 @section('content')
     <div class="row">
         <a href="{{route('users.index')}}" class="btn btn-warning btn-fill pull-right"
-           style="margin-right:15px; margin-bottom:8px;">Voltar
+        style="margin-right:15px; margin-bottom:8px;">Voltar
         </a>
     </div>
     <div class="card">
@@ -36,7 +36,7 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>
-                                        <input data-id="{{$user->id}}" class="toogle-class toogle-Admin" type="checkbox"
+                                        <input data-id="{{$user->id}}" class="toogle-admin"  type="checkbox"
                                                 data-onstyle="success"
                                                 data-offstyle="danger"
                                                 data-toggle="toggle"
@@ -46,7 +46,7 @@
                                             />
                                         </td>
                                         <td>
-                                        <input data-id="{{$user->id}}" class="toogle-class" type="checkbox"
+                                        <input data-id="{{$user->id}}" class="toogle-status"  type="checkbox"
                                                 data-onstyle="success"
                                                 data-offstyle="danger"
                                                 data-toggle="toggle"
@@ -74,8 +74,9 @@
 @section('user_change_status')
     <script>
     $(document).ready(function () {
+        // window.print();
         $(function (){
-        $('.toogle-class').change(function (){
+        $('.toogle-status').change(function (){
             $.ajax({
                 type: "GET",
                 dataType: "json",
@@ -86,34 +87,30 @@
             })
         })
 
-    })
-    });
-
-    </script>
-@endsection
-
-@section('user_change_isAdmin')
-    <script>
-        $(document).ready(function () {
-        $(function (){
-        $('.toogle-Admin').change(function (){
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        $('.toogle-admin').change(function (){
             $.ajax({
-                type: "PUT",
+                type: 'GET',
                 dataType: "json",
-                url: "{{route('users.status.update', [$user->id, $user->isAdmin])}}",
+                url: "{{route('users.status.show', [$user->id, $user->isAdmin])}}",
                 success: function (data){
                     sweetAlert('Situação', 'Alterado com sucesso!', 'success')
                 }
             })
         })
+    })
+    });
+
+    </script>
+@endsection
+{{--
+@section('user_change_isAdmin')
+    <script>
+        $(document).ready(function () {
+        $(function (){
+
 
     })
     });
     </script>
-@endsection
+@endsection --}}
 

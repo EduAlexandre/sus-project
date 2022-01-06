@@ -29,7 +29,7 @@
 	                                            <td >{{$user->name}}</td>
 	                                            <td class="text-center">{{$user->email}}</td>
 	                                            <td class="td-actions text-right">
-	                                                <a href="{{route('users.show', $user->id)}}" rel="tooltip" title="Edit Profile" class="btn btn-success btn-simple btn-xs">
+	                                                <a href="{{route('users.show', $user->id)}}" rel="tooltip" title="Edição de dados" class="btn btn-success btn-simple btn-xs">
 	                                                    <i class="ti-pencil-alt"></i>
 	                                                </a>
 	                                            </td>

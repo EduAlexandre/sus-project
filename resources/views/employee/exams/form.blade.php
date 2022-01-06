@@ -5,11 +5,11 @@
 @section('content')
             <div class="row">
                 <div class="row" style="margin-bottom: 8px; margin-right: 12px;">
-                    <a href="{{route("employee.list")}}"  class="btn btn-warning btn-fill pull-right">Voltar</a>
+                    <a href=""  class="btn btn-warning btn-fill pull-right">Voltar</a>
                 </div>
                 <div class="col-md-12 col-md-offset-0">
                     <div class="card card-wizard" id="wizardCard">
-                        <form action="{{route('employee.exam.create')}}" id="wizardForm" method="post" enctype="multipart/form-data">
+                        <form action="" id="wizardForm" method="post" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="employees_id" value="{{$employee->id}}">
                             <div class="card-header text-center">

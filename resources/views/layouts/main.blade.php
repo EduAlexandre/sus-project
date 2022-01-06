@@ -99,7 +99,7 @@
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li>
-                                <a href="{{url('employee/list')}}">
+                                <a href="{{route('employees.index')}}">
                                     <span class="sidebar-mini">LF</span>
                                     <span class="sidebar-normal">Lista de funcionários</span>
                                 </a>

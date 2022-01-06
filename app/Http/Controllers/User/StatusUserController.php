@@ -30,9 +30,11 @@ class StatusUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(User $user, $status)
+    public function show(User $user, $status)
     {
-        dd('chegou aqui');
+        $newStatusAdmin = $status == 1 ? 0 : 1;
+        $user->isAdmin = $newStatusAdmin;
+        $user->save();
         return response()->json();
     }
 }

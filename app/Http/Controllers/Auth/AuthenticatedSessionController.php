@@ -27,7 +27,7 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(LoginRequest $request)
+    public function store(LoginRequest $request): \Illuminate\Http\RedirectResponse
     {
 
         $rules = [
@@ -47,7 +47,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->authenticate();
 
-        if (Auth::user()->isActive && Auth::user()->firstAccess == false) {
+        if (Auth::user()->isActive) {
             $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);

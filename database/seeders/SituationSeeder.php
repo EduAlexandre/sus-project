@@ -5,16 +5,16 @@ namespace Database\Seeders;
 use App\Models\Situation;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class SituationSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(StatesSeeder::class);
-        $this->call(Situation::class);
+        Situation::create(['name' => 'ATIVO']);
+        Situation::create(['name' => 'ÓBITO']);
     }
 }
