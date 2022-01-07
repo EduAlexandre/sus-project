@@ -23,7 +23,7 @@ class Employee extends Model
         'state',
     ];
 
-    public function examEmployee(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function exams(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany('App\Models\Exams', 'employees_id');
     }

@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Exam;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Exam\CreateRequest;
+use App\Models\Cat;
 use App\Models\Employee;
+use App\Models\Exams;
+use App\Models\Neoplasm;
+use App\Models\Sinan;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ExamController extends Controller
 {
@@ -15,8 +21,11 @@ class ExamController extends Controller
      */
     public function index(Employee $employee)
     {
-
-        return view('employee.exams.form', compact('employee'));
+        $cats = Cat::orderBy('name', 'ASC')->get();
+        $sinans = Sinan::orderBy('name', 'ASC')->get();
+        $neoplasms = Neoplasm::orderBy('name', 'ASC')->get();
+        $employee = Employee::with(['exams'])->find($employee->id);
+        return view('employee.exams.form', compact('employee', 'cats', 'sinans', 'neoplasms'));
     }
 
     /**
@@ -26,7 +35,11 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+        $cats = Cat::orderBy('name', 'ASC')->get();
+        $sinans = Sinan::orderBy('name', 'ASC')->get();
+        $neoplasms = Neoplasm::orderBy('name', 'ASC')->get();
+        $action = route('employees.exams.store');
+        return view('employee.exams.form', compact('action', 'cats', 'sinans', 'neoplasms'));
     }
 
     /**
@@ -35,9 +48,23 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $request)
     {
-        //
+        $request->validated();
+        $data = $request->validated();
+
+        if ($request->hasFile('appendant')) {
+            $file = $request->file('appendant');
+            $extension = $file->extension();
+            $fileName = md5($file->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $file->move(public_path('assets/files/exams'), $fileName);
+            $data['appendant'] = $fileName;
+        }
+
+        Exams::create($data);
+
+        Alert::success('Sucesso', 'Exame cadastrado com sucesso');
+        return redirect()->route('employees.index');
     }
 
     /**
@@ -46,9 +73,10 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Employee $employee, Exams $exam)
     {
-        //
+        $employees = Employee::where('id', $employee->id)->with(['exams'])->get();
+        return view('employee.exams.show', compact('employees'));
     }
 
     /**
@@ -57,9 +85,18 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Employee $employee, Exams $exam)
     {
-        //
+
+        $cats = Cat::orderBy('name', 'ASC')->get();
+        $sinans = Sinan::orderBy('name', 'ASC')->get();
+        $neoplasms = Neoplasm::orderBy('name', 'ASC')->get();
+        $employees = Employee::where('id', $employee->id)->with(['exams'])->get();
+        foreach ($employees as $employee) :
+            $action = route('employees.exams.update', [$employee->id, $exam]);
+        endforeach;
+
+        return view('employee.exams.form', compact('employee', 'action', 'cats', 'sinans', 'neoplasms', 'exam'));
     }
 
     /**
@@ -69,9 +106,8 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Employee $employee, Exams $exam)
     {
-        //
     }
 
     /**

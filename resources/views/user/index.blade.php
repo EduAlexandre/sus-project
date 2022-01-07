@@ -20,7 +20,7 @@
 	                                        <tr>
 	                                            <th>Nome</th>
 	                                            <th class="text-center">E-mail</th>
-	                                            <th class="text-right">Ações</th>
+	                                            <th class="text-center">Ações</th>
 	                                        </tr>
 	                                    </thead>
 	                                    <tbody>
@@ -28,7 +28,7 @@
                                                 <tr>
 	                                            <td >{{$user->name}}</td>
 	                                            <td class="text-center">{{$user->email}}</td>
-	                                            <td class="td-actions text-right">
+	                                            <td class="td-actions text-center">
 	                                                <a href="{{route('users.show', $user->id)}}" rel="tooltip" title="Edição de dados" class="btn btn-success btn-simple btn-xs">
 	                                                    <i class="ti-pencil-alt"></i>
 	                                                </a>

@@ -19,8 +19,9 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::orderBy('name', 'ASC')->get();
+        $employees = Employee::with('exams')->orderBy('name', 'ASC')->paginate(10);
         $situations = Situation::all();
+
         return view('employee.index', compact('employees', 'situations'));
     }
 
@@ -49,7 +50,7 @@ class EmployeeController extends Controller
         Employee::create($data);
 
         Alert::success('Sucesso', 'Funcionário cadastrado com sucesso');
-        return redirect()->route('employee.index');
+        return redirect()->route('employees.index');
     }
 
     /**
