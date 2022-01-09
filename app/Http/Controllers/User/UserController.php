@@ -90,6 +90,6 @@ class UserController extends Controller
         $user->update($data);
 
         Alert::success('Sucesso', 'Dados atualizados com sucesso');
-        return redirect()->route('users.index');
+        return redirect()->back();
     }
 }

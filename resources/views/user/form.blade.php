@@ -78,7 +78,7 @@
                         <button type="submit" class="btn btn-info btn-fill pull-right">
                             {{@$user ? 'Atualizar' : 'Cadastrar'}}
                         </button>
-                        <a href="{{route('users.index')}}" class="btn btn-default btn-fill pull-right"
+                        <a href="{{url('dashboard')}}" class="btn btn-default btn-fill pull-right"
                         style="margin-right:8px;">
                             voltar
                         </a>
