@@ -27,7 +27,7 @@
                         <tbody>
 
                         @foreach($employees as $employee)
-                            @foreach ($employee->exams->sortBy('id') as $item)
+                            @foreach ($employee->exams as $item)
                                     <tr>
                                         <td>{{ $employee->name }}</td>
                                         <td class="text-center">{{$item->company_name}}</td>

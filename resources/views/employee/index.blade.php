@@ -3,7 +3,6 @@
 @section('title', 'SA/SUS - Lista de Usuário(s) ')
 
 @section('content')
-
     <div class="row">
         <a href="{{route('employees.create')}}" class="btn btn-warning btn-fill pull-right"
         style="margin-right:15px; margin-bottom:8px;">Cadastrar funcionário
@@ -35,9 +34,9 @@
                                     <a href="{{route('employees.edit', $employee->id)}}" rel="tooltip" title="Edição de dados" class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-pencil"></i>
                                     </a>
-                                    <a href="{{route('employees.exams.index', $employee->id)}}" rel="tooltip" title="Cadastrar Exame" class="btn btn-info btn-simple btn-xs">
-	                                <i class="ti-pencil-alt"></i>
-	                                </a>
+                                        <a href="{{route('employees.exams.create', [$employee->id])}}" rel="tooltip" title="Cadastrar Exame" class="btn btn-info btn-simple btn-xs">
+                                        <i class="ti-pencil-alt"></i>
+                                        </a>
                                     @foreach ($employee->exams as $item)
                                     @if ($item->count() >= 1)
                                         <a href="{{route('employees.exams.show', [$employee->id, $item->id])}}" rel="tooltip" title="Exames Cadastrados" class="btn btn-info btn-simple btn-xs">

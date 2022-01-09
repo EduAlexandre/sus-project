@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Exam;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Exam\CreateRequest;
+use App\Http\Requests\Exam\UpdateRequest;
 use App\Models\Cat;
 use App\Models\Employee;
 use App\Models\Exams;
@@ -11,6 +12,7 @@ use App\Models\Neoplasm;
 use App\Models\Sinan;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\File;
 
 class ExamController extends Controller
 {
@@ -33,13 +35,14 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Employee $employee)
     {
+
         $cats = Cat::orderBy('name', 'ASC')->get();
         $sinans = Sinan::orderBy('name', 'ASC')->get();
         $neoplasms = Neoplasm::orderBy('name', 'ASC')->get();
-        $action = route('employees.exams.store');
-        return view('employee.exams.form', compact('action', 'cats', 'sinans', 'neoplasms'));
+        $action = route('employees.exams.store', $employee->id);
+        return view('employee.exams.form', compact('employee', 'action', 'cats', 'sinans', 'neoplasms'));
     }
 
     /**
@@ -91,12 +94,12 @@ class ExamController extends Controller
         $cats = Cat::orderBy('name', 'ASC')->get();
         $sinans = Sinan::orderBy('name', 'ASC')->get();
         $neoplasms = Neoplasm::orderBy('name', 'ASC')->get();
-        $employees = Employee::where('id', $employee->id)->with(['exams'])->get();
-        foreach ($employees as $employee) :
-            $action = route('employees.exams.update', [$employee->id, $exam]);
-        endforeach;
+        $employees = Employee::where('id', $employee->id)->with(['exams' => function ($query) use ($exam) {
+            $query->where('id', $exam->id);
+        }])->get();
+        $action = route('employees.exams.update', [$employee->id, $exam]);
 
-        return view('employee.exams.form', compact('employee', 'action', 'cats', 'sinans', 'neoplasms', 'exam'));
+        return view('employee.exams.updateForm', compact('employee', 'action', 'cats', 'sinans', 'neoplasms', 'exam'));
     }
 
     /**
@@ -106,8 +109,28 @@ class ExamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Employee $employee, Exams $exam)
+    public function update(UpdateRequest $request,  Employee $employee, Exams $exam)
     {
+        $data = $request->validated();
+
+        if ($request->hasFile('appendant')) {
+
+            //DELETE EXISTS IMAGE
+            $path = 'assets/files/exams' . $exam->appendant;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $file = $request->file('appendant');
+            $extension = $file->extension();
+            $fileName = md5($file->getClientOriginalName() . strtotime("now")) . "." . $extension;
+            $file->move(public_path('assets/files/exams'), $fileName);
+            $data['appendant'] = $fileName;
+        }
+
+        $exam->update($data);
+
+        Alert::success('Sucesso', 'Exame editado com sucesso');
+        return redirect()->route('employees.index');
     }
 
     /**
