@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-xs-7">
                             <div class="numbers pull-left">
-                                {{ $employees}}
+                                {{ @$employees}}
                             </div>
                         </div>
                         <div class="col-xs-5">
@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-xs-7">
                             <div class="numbers pull-left">
-                                {{ $exams}}
+                                {{ @$exams}}
                             </div>
                         </div>
                         <div class="col-xs-5">

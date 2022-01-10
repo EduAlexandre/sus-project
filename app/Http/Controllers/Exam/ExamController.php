@@ -79,7 +79,7 @@ class ExamController extends Controller
     public function show(Employee $employee, Exams $exam)
     {
         $employees = Employee::where('id', $employee->id)->with(['exams'])->get();
-        return view('employee.exams.show', compact('employees'));
+        return view('employee.exams.index', compact('employees'));
     }
 
     /**
@@ -117,7 +117,7 @@ class ExamController extends Controller
         if ($request->hasFile('appendant')) {
 
             //DELETE EXISTS IMAGE
-            $path = 'assets/files/exams/'. $exam->appendant;
+            $path = 'assets/files/exams/' . $exam->appendant;
 
             if (File::exists($path)) {
                 File::delete($path);

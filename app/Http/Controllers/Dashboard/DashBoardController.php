@@ -27,4 +27,11 @@ class DashBoardController extends Controller
         endforeach;
         return view('admintemplate', compact('totalData', 'exams', 'employees'));
     }
+
+    public function show(Employee $dashboard)
+    {
+        $data =  Employee::with('exams')->where('id', $dashboard->id)->get();
+
+        return view('employee.exams.show', compact('data'));
+    }
 }

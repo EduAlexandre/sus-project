@@ -31,6 +31,9 @@
                                 <td>{{$employee->cpf}}</td>
                                 <td >{{$employee->sus_card}}</td>
                                 <td class="td-actions text-center">
+                                    <a href="{{route('dashboard.show', $employee->id)}}" rel="tooltip" title="Visualizar registro" class="btn btn-success btn-simple btn-xs">
+                                        <i class="ti-eye"></i>
+                                    </a>
                                     <a href="{{route('employees.edit', $employee->id)}}" rel="tooltip" title="Edição de dados" class="btn btn-success btn-simple btn-xs">
                                         <i class="ti-pencil"></i>
                                     </a>

@@ -13,10 +13,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    //toast('Bem vindo ao sistema', 'success');
-    Route::resource('dashboard', DashBoardController::class)->only('index');
+    Route::resource('dashboard', DashBoardController::class)->only(['index', 'show']);
 
-    Route::resource('employees', EmployeeController::class)->except('destroy', 'show');
+    Route::resource('employees', EmployeeController::class)->except(['destroy', 'show']);
     Route::resource('employees.exams', ExamController::class);
 
     Route::resource('users', UserController::class)->except('destroy');
