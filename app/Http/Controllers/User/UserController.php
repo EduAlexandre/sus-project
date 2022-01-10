@@ -6,10 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateRequest;
 use App\Http\Requests\User\UpdateRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
+    public function __constructor()
+    {
+       Auth::user()->isAdmin;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +23,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::orderBy('name', 'ASC')->get();
         return view('user.index', compact('users'));
     }

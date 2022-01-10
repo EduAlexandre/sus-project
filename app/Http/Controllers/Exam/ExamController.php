@@ -111,12 +111,14 @@ class ExamController extends Controller
      */
     public function update(UpdateRequest $request,  Employee $employee, Exams $exam)
     {
+
         $data = $request->validated();
 
         if ($request->hasFile('appendant')) {
 
             //DELETE EXISTS IMAGE
-            $path = 'assets/files/exams' . $exam->appendant;
+            $path = 'assets/files/exams/'. $exam->appendant;
+
             if (File::exists($path)) {
                 File::delete($path);
             }

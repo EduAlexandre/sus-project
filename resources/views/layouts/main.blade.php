@@ -45,11 +45,11 @@
             Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
         -->
         <div class="logo">
-            <a href="{{url('dashboard')}}" class="simple-text logo-mini">
-                PM
+            <a href="{{route('dashboard.index')}}" class="simple-text logo-mini">
+                SA
             </a>
 
-            <a href="{{url('dashboard')}}" class="simple-text logo-normal">
+            <a href="{{route('dashboard.index')}}" class="simple-text logo-normal">
                 SA/SUS
             </a>
         </div>
@@ -63,7 +63,7 @@
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
 	                        <span>
                                 {{ Auth::user()->name }}
-		                        <b class="caret"></b>
+		                    <b class="caret"></b>
 							</span>
                     </a>
                     <div class="clearfix"></div>
@@ -73,7 +73,7 @@
                             <li>
                                 <a href="{{route('users.edit', Auth::user()->id )}}">
                                     <span class="sidebar-mini">Mc</span>
-                                    <span class="sidebar-normal">Minha Conta</span>
+                                    <span class="sidebar-normal">Meus dados</span>
                                 </a>
                             </li>
                             @if(Auth::user()->isAdmin && Auth::user()->isActive)
@@ -108,99 +108,8 @@
                         </ul>
                     </div>
                 </li>
-                <li>
-                    <a data-toggle="collapse" href="#formsExamples">
-                        <i class="ti-clipboard"></i>
-                        <p>
-                            Análise de Dados
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="formsExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="../forms/regular.html">
-                                    <span class="sidebar-mini">EG</span>
-                                    <span class="sidebar-normal">Estatística Geral</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../forms/extended.html">
-                                    <span class="sidebar-mini">EE</span>
-                                    <span class="sidebar-normal">Estatística Específica</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../forms/validation.html">
-                                    <span class="sidebar-mini">PB</span>
-                                    <span class="sidebar-normal">Power BI</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a data-toggle="collapse" href="#tablesExamples">
-                        <i class="ti-view-list-alt"></i>
-                        <p>
-                            Relatórios
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="tablesExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="../tables/regular.html">
-                                    <span class="sidebar-mini">QT</span>
-                                    <span class="sidebar-normal">Quantitativo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../tables/extended.html">
-                                    <span class="sidebar-mini">QL</span>
-                                    <span class="sidebar-normal">Qualitativo</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../tables/bootstrap-table.html">
-                                    <span class="sidebar-mini">E</span>
-                                    <span class="sidebar-normal">Específico</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a data-toggle="collapse" href="#mapsExamples">
-                        <i class="ti-map"></i>
-                        <p>
-                            Maps
-                            <b class="caret"></b>
-                        </p>
-                    </a>
-                    <div class="collapse" id="mapsExamples">
-                        <ul class="nav">
-                            <li>
-                                <a href="../maps/google.html">
-                                    <span class="sidebar-mini">GM</span>
-                                    <span class="sidebar-normal">Google Maps</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../maps/vector.html">
-                                    <span class="sidebar-mini">VM</span>
-                                    <span class="sidebar-normal">Vector maps</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../maps/fullscreen.html">
-                                    <span class="sidebar-mini">FSM</span>
-                                    <span class="sidebar-normal">Full Screen Map</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+
+
             </ul>
         </div>
     </div>
@@ -230,7 +139,7 @@
                                     @csrf
 
                                     <x-dropdown-link :href="route('logout')"
-                                                     onclick="event.preventDefault();
+                                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                         <p class="pull-right" style="color: #DB2B39; font-weight: bold; padding-right: 2px; padding-top: 2px">SAIR</p>
                                     </x-dropdown-link>
