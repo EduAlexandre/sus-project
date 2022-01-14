@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StatusUserController extends Controller
 {
@@ -17,10 +18,14 @@ class StatusUserController extends Controller
      */
     public function edit(User $user, $status)
     {
-        $newStatus = $status == 1 ? 0 : 1;
-        $user->isActive = $newStatus;
-        $user->save();
-        return response()->json();
+        if(Auth::user()->isAdmin)
+        {
+            $newStatus = $status == 1 ? 0 : 1;
+            $user->isActive = $newStatus;
+            $user->save();
+            return response()->json();
+        }
+        return view('admintemplate');
     }
 
     /**
@@ -32,9 +37,13 @@ class StatusUserController extends Controller
      */
     public function show(User $user, $status)
     {
-        $newStatusAdmin = $status == 1 ? 0 : 1;
-        $user->isAdmin = $newStatusAdmin;
-        $user->save();
-        return response()->json();
+        if(Auth::user()->isAdmin)
+        {
+            $newStatusAdmin = $status == 1 ? 0 : 1;
+            $user->isAdmin = $newStatusAdmin;
+            $user->save();
+            return response()->json();
+        }
+        return view('admintemplate');
     }
 }

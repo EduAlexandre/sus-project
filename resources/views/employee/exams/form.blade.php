@@ -9,14 +9,9 @@
                 </div>
                 <div class="col-md-12 col-md-offset-0">
                     <div class="card card-wizard" id="wizardCard">
-                        <form action="{{@$action}}" id="wizardForm" method="post" enctype="multipart/form-data">
-                            @csrf
+                        <form action="{{@$action}}" id="wizardForm" method="post" enctype="multipart/form-data">                  @csrf
 
-                        {{-- @foreach ($employee->exams as $item)
-                            @if($item->count() >= 1)
-                                @method('PUT')
-                            @endif
-                        @endforeach --}}
+
 
                             <input type="hidden" name="employees_id" value="{{$employee->id}}">
                             <div class="card-header text-center">

@@ -24,8 +24,13 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::orderBy('name', 'ASC')->get();
-        return view('user.index', compact('users'));
+        if(Auth::user()->isAdmin)
+        {
+            $users = User::orderBy('name', 'ASC')->get();
+            return view('user.index', compact('users'));
+        }
+        return view('admintemplate');
+
     }
 
     /**
@@ -35,8 +40,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        $action = route('users.store');
-        return view('user.form', compact('action'));
+        if(Auth::user()->isAdmin)
+        {
+            $action = route('users.store');
+            return view('user.form', compact('action'));
+        }
+        return view('admintemplate');
     }
 
     /**
@@ -47,17 +56,22 @@ class UserController extends Controller
      */
     public function store(CreateRequest $createRequest)
     {
-        $createRequest->validated();
-        $newPassword = "123456";
-        User::create([
-            'name' => $createRequest->name,
-            'email' => $createRequest->email,
-            'password' => $newPassword,
-            'isAdmin' => $createRequest->isAdmin
-        ]);
+        if(Auth::user()->isAdmin)
+        {
+            $createRequest->validated();
+            $newPassword = "123456";
+            User::create([
+                'name' => $createRequest->name,
+                'email' => $createRequest->email,
+                'password' => $newPassword,
+                'isAdmin' => $createRequest->isAdmin
+            ]);
 
-        Alert::success('Sucesso', 'Usuário cadastrado com sucesso');
-        return redirect()->route('users.index');
+            Alert::success('Sucesso', 'Usuário cadastrado com sucesso');
+            return redirect()->route('users.index');
+        }
+        return view('admintemplate');
+
     }
 
     /**
@@ -68,7 +82,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('user.status', compact('user'));
+        if(Auth::user()->isAdmin)
+        {
+            return view('user.status', compact('user'));
+        }
+
+        return view('admintemplate');
     }
 
     /**
