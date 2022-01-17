@@ -20,8 +20,9 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table">
+
                         @foreach ($data as $item)
+                        <table class="table">
                         <tr>
                             <th>Nome:</th>
                             <td>{{ $item->name}}</td>
@@ -75,13 +76,14 @@
                             <hr>
                         @forelse($item->exams as $exam)
                            <div class="row">
-                                <tr>
-                                    <th>Data exame pulmonar: </th>
-                                    <td>{{\Carbon\Carbon::parse($exam->examLung_date)->format('d/m/Y')}}</td>
-                                </tr>
+                               <table class="table">
                                     <div class="form-group">
-                                        <table class="table">
+
                                             <thead>
+                                            <tr>
+                                                <th style="color: black;">Data exame pulmonar:</th>
+                                                <td style="color: black;">{{\Carbon\Carbon::parse($exam->examLung_date)->format('d/m/Y')}}</td>
+                                            </tr>
                                             <tr>
                                                 <th scope="col">
                                                     <span style="font-size: xx-small; ">
@@ -145,7 +147,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <font size="1"> VEF1/CVF </font>
+                                                    <span> VEF1/CVF </span>
                                                 </td>
                                                 <td>
                                                     <input class="form-control" value="{{$exam->vefcvf_1}}" style=" -webkit-border-radius: 10px; text-align: center" readonly/>
@@ -182,9 +184,9 @@
                                                 </td>
                                             </tr>
                                             </tbody>
-                                        </table>
 
-                                    </div> <!-- <div class="form-group"> -->
+
+
 
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -294,13 +296,13 @@
                                        <div class="form-group">
                                            <label for="exampleInputPassword1">Setor:</label>
                                            <input  class="form-control"
-                                                   style=" -webkit-border-radius: 10px;" value="{{$exam->company_sector}}"  required />
+                                                   style=" -webkit-border-radius: 10px;" value="{{$exam->company_sector}}" disabled/>
                                        </div>
 
                                        <div class="form-group">
                                            <label for="exampleInputPassword1">Cargo:</label>
                                            <input class="form-control" value="{{$exam->company_office}}"
-                                                  style=" -webkit-border-radius: 10px; "/>
+                                                  style=" -webkit-border-radius: 10px; " disabled/>
                                        </div>
 
                                        <div class="form-group">
@@ -310,18 +312,18 @@
                                                <option {{ $exam->cat == $cat->id ? 'selected' : ''}}
                                                >{{ $neoplasm->name }}</option>
                                            @endforeach
-                                       <select />
-                                   </div>
-                               </div>
+                                       </select>
 
 
                         @empty
                             <tr class="text-center">
                                 <td colspan="2" style="font-weight: 700; font-size: 18px; color: #ff4c30;">Não existe exame cadastrado!</td>
                             </tr>
+
                         @endforelse
+                        </table>
                         @endforeach
-                    </table>
+                        </table>
                 </div>
         </div>
     </div>

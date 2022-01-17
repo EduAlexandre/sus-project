@@ -57,7 +57,7 @@
             <div class="user">
                 <div class="info">
                     <div class="photo">
-                        <img src="{{asset("/assets/img/faces/face-2.jpg")}}" />
+                        <img src="{{asset("/assets/img/background/jaleko-sus.png")}}" />
                     </div>
 
                     <a data-toggle="collapse" href="#collapseExample" class="collapsed">
@@ -156,27 +156,8 @@
         </div> <! -- ACABA AQUI A DIV CONTENT -->
         <footer class="footer">
             <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="https://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
                 <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, desenvolvido pelo STI-SIPOM</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, desenvolvido por FabricaDeSoftware - ❤</a>
                 </div>
             </div>
         </footer>

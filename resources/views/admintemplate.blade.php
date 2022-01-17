@@ -31,7 +31,7 @@
                         <div class="col-xs-5">
                         </div>
                     </div>
-                    <h6 class="big-title">Total d exames cadastrados</h6>
+                    <h6 class="big-title">Total de exames cadastrados</h6>
                     <div id="chartTotalSubscriptions"></div>
                 </div>
             </div>
