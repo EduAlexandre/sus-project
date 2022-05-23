@@ -47,7 +47,6 @@
                     <div class="clearfix"></div>
                 @endif
         </div>
-
     </div>
     <div class="clearfix"></div>
 @endsection

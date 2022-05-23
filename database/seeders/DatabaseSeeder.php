@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CatSeeder::class);
         $this->call(NeoplasmSeeder::class);
         $this->call(SinanSeeder::class);
+        $this->call(AdminUserSeeder::class);
     }
 }

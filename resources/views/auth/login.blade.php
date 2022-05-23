@@ -72,7 +72,7 @@
         <footer class="footer footer-transparent">
             <div class="container">
                 <div class="copyright">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, desenvolvido pelo STI-SIPOM</a>
+                    &copy; <script>document.write(new Date().getFullYear())</script>, desenvolvido por FabricaDeSoftware - ❤</a>
                 </div>
             </div>
         </footer>
