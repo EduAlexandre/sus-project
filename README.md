@@ -66,7 +66,19 @@ Este projeto é distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LI
 
 ---
 
-Esperamos que este sistema seja útil para registrar informações importantes sobre os trabalhadores expostos ao amianto e contribuir para a segurança e bem-estar deles. Se tiver alguma dúvida ou precisar de assistência, sinta-se à vontade para entrar em contato conosco.
+### Autor
+---
+
+<a href="https://github.com/EduAlexandre">
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/33762051?v=4" width="100px;" alt=""/>
+ <br />
+ <sub><b>Eduardo Alexandre</b></sub></a> <a href="https://blog.rocketseat.com.br/author/thiago//" title="Rocketseat">🚀</a>
+
+
+Feito com ❤️ por Eduardo Alexandre 👋🏽 Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Eduardo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https:https://www.linkedin.com/in/eduardo-alexandre-19357b180/)](https://www.linkedin.com/in/eduardo-alexandre-19357b180/) 
+[![Gmail Badge](https://img.shields.io/badge/-edualexandre.f@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:edualexandre.f@gmail.com)](mailto:edualexandre.f@gmail.com)
 
 
 
